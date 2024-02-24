@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search Results</title>
+    <style>
+      body {
+        background-color: #222;
+        color: #fff;
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+      h1 {
+        margin-bottom: 20px;
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+      li {
+        margin-bottom: 20px;
+        border-bottom: 1px solid #444;
+        padding-bottom: 20px;
+      }
+      h2 {
+        margin-bottom: 10px;
+      }
+      p {
+        margin-bottom: 5px;
+      }
+      p.rating {
+        color: #ffcc00;
+      }
+    </style>
+  </head>
+  <body>
+    <% if(note.length == 0){ %>
+    <h3>No results found!</h3>
+    <% }else{ %>
+    <ul>
+      <li>
+        <h2><%= note.title %></h2>
+        <p><%= note.content %></p>
+        <p class="rating">Rating: <%= note.rating %></p>
+      </li>
+      <% } %>
+    </ul>
+  </body>
+</html>

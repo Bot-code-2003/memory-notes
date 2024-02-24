@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Memory Notes</title>
+
+    <!-- External css -->
+    <link rel="stylesheet" href="styles/main.css" />
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="title">
+        <h1>Memory Notes</h1>
+        <p>Add all the watched kdramas and animes here.</p>
+      </div>
+      <div class="search">
+        <form class="search-form" action="/search" method="post">
+          <input
+            type="text"
+            name="dramaName"
+            autocomplete="off"
+            placeholder="Search..."
+          />
+          <button type="submit" id="submitBtn">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="white"
+              class="bi bi-search"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"
+              />
+            </svg>
+          </button>
+        </form>
+      </div>
+    </header>
+
+    <main>
+      <!-- Display watched dramas and animes as cover images -->
+      <div class="memory-notes">
+        <% if(notes.length==0){ %>
+        <div class="no-results">
+          <h3>Nothing here!</h3>
+        </div>
+        <!-- <img src="images/Daco_4314017.png" alt="click here" /> -->
+        <% }else{ %> <% for(let note of notes){ %>
+        <a href="/note/<%= note.id %>">
+          <div class="memory-note" style="border-bottom: 1px solid #444">
+            <div>
+              <h4><%= note.title %></h4>
+            </div>
+            <div class="right">
+              <p class="rating"><%= note.rating %>/10</p>
+              <!-- <div class="view">View</div> -->
+              <div class="trash">
+                <a href="/delete/<%= note.id %>">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="white"
+                    class="bi bi-trash"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"
+                    />
+                    <path
+                      d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"
+                    />
+                  </svg>
+                </a>
+              </div>
+              <div class="edit">
+                <a href="/edit/<%= note.id %>">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="white"
+                    class="bi bi-pen"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001m-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708z"
+                    />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </a>
+
+        <% }; %> <% } %>
+        <!-- Add more memory notes here -->
+      </div>
+    </main>
+
+    <footer>
+      <a href="/new" class="add-btn">+</a>
+    </footer>
+  </body>
+</html>

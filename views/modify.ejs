@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Notes</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+  </head>
+  <body>
+    <div class="new-container">
+      <h1><%= heading %></h1>
+      <% if(locals.note){ %>
+      <form
+        class="modify-form"
+        action="/notes/update/<%= note.id %>"
+        method="post"
+      >
+        <div>
+          <h4>Title</h4>
+          <input type="text" name="title" value="<%= note.title %>" />
+        </div>
+        <div>
+          <h4>Content</h4>
+          <textarea name="content" id="content" cols="30" rows="10">
+<%= note.content  %></textarea
+          >
+        </div>
+        <div>
+          <h4>Rating</h4>
+          <input
+            type="number"
+            class="inp-rating"
+            name="rating"
+            value="<%= note.rating %>"
+          />
+        </div>
+        <button class="full-width" type="submit"><%= submit %></button>
+      </form>
+      <% }else{ %>
+      <form class="modify-form" action="/notes/new" method="post">
+        <h4>Title</h4>
+        <input type="text" name="title" placeholder="Title" required />
+        <h4>Content</h4>
+        <textarea
+          name="content"
+          placeholder="Content"
+          required
+          rows="10"
+        ></textarea>
+        <h4>Rating</h4>
+        <input type="number" name="rating" placeholder="rating" required />
+        <button class="full-width" type="submit"><%= submit %></button>
+      </form>
+      <% } %>
+    </div>
+  </body>
+</html>

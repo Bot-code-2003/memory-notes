@@ -1,0 +1,211 @@
+body {
+  font-family: "Roboto Mono", monospace;
+  background-color: #222;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  width: 100%;
+}
+
+header {
+  background-color: #252525;
+  padding: 20px;
+  text-align: center; /* Center-align text */
+  display: flex;
+  justify-content: space-around;
+}
+
+header h1,
+header p {
+  text-align: center; /* Center-align text */
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.search input {
+  padding: 10px;
+  width: 200px;
+  cursor: text;
+  outline: none;
+  background-color: #222;
+  border: 1px solid white;
+  border-radius: 3px;
+  max-height: 20px;
+  color: white;
+}
+
+#submitBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.search-form {
+  display: flex;
+  gap: 10px;
+}
+
+main {
+  padding: 20px;
+}
+
+.no-results {
+  font-size: 60px;
+  color: rgba(181, 181, 181, 0.74);
+}
+
+.memory-note {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  padding: 0 15px;
+  border-radius: 2px;
+  /* position: relative; */
+}
+
+.memory-note:hover {
+  background-color: rgba(137, 137, 137, 0.11);
+}
+
+.memory-note .right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* .memory-note img {
+  border-radius: 5px;
+  width: 170px;
+  height: 250px;
+  object-fit: cover;
+  transition: filter 0.3s ease; 
+} */
+
+/* .memory-note:hover img {
+  filter: blur(5px);  Apply blur effect on hover 
+} */
+
+/* .memory-note .view {
+  cursor: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgb(0, 0, 0);
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+} */
+
+/* .memory-note:hover .view {
+  opacity: 1;
+} */
+
+.memory-note .trash,
+.memory-note .edit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 4px;
+  background-color: rgb(255, 66, 66);
+}
+
+.memory-note .edit {
+  background-color: rgb(60, 63, 255);
+}
+
+/* .memory-note:hover .trash,
+.memory-note:hover .edit {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+} */
+
+.rating {
+  margin-right: 30px;
+  background-color: rgba(253, 224, 61, 0.888);
+  padding: 4px;
+  color: black;
+  border-radius: 4px;
+  min-width: 66px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; */
+}
+
+footer {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.add-btn {
+  display: block;
+  width: 40px;
+  height: 40px;
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%;
+  font-size: 24px;
+  text-decoration: none;
+}
+
+.modify-form {
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.new-container {
+  margin-left: 50px;
+}
+
+.new-container input,
+textarea {
+  color: rgb(255, 255, 255);
+  font-size: 1rem;
+  padding: 10px;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  min-height: 40px;
+  width: 500px;
+  background-color: #616161;
+}
+
+.new-container button {
+  padding: 10px;
+  background-color: #007bff;
+  width: 100px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  margin-top: 10px;
+}
+
+.new-container .inp-rating {
+  width: 200px;
+}
