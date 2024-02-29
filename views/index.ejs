@@ -46,6 +46,14 @@
           </button>
         </form>
       </div>
+      <div class="filter">
+        <label for="filter">Filter</label>
+        <select name="filter" id="filter" onchange="redirectToSelected()">
+          <option value="" disabled selected>Select an option</option>
+          <option value="/a-z">A-Z</option>
+          <option value="/rating">Rating</option>
+        </select>
+      </div>
     </header>
 
     <main>
@@ -112,5 +120,12 @@
     <footer>
       <a href="/new" class="add-btn">+</a>
     </footer>
+
+    <script>
+      function redirectToSelected() {
+        var url = document.getElementById("filter").value;
+        window.location.href = url;
+      }
+    </script>
   </body>
 </html>

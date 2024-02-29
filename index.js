@@ -1,17 +1,20 @@
 import express from "express";
 import bodyParser from "body-parser";
 import pg from "pg";
+import env from "dotenv";
 
 const app = express();
 const port = 3000;
+env.config();
 
 const db = new pg.Client({
-  user: "postgres",
-  host: "localhost",
-  database: "Notes",
-  password: "123456",
-  port: 5432,
+  user: process.env.PG_USER,
+  host: process.env.PG_HOST,
+  database: process.env.PG_DATABASE,
+  password: process.env.PG_PASSWORD,
+  port: process.env.PG_PORT,
 });
+
 db.connect();
 
 app.use(express.static("public"));
@@ -27,6 +30,32 @@ app.get("/", async (req, res) => {
     });
   } catch (error) {
     console.error("Error:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+//a-z filter
+app.get("/a-z", async (req, res) => {
+  try {
+    const result = await db.query("SELECT * FROM notes ORDER BY title ASC");
+    const notes = result.rows;
+    res.render("index.ejs", {
+      notes: notes,
+    });
+  } catch (error) {
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+//rating filter
+app.get("/rating", async (req, res) => {
+  try {
+    const result = await db.query("SELECT * FROM notes ORDER BY rating DESC");
+    const notes = result.rows;
+    res.render("index.ejs", {
+      notes: notes,
+    });
+  } catch (error) {
     res.status(500).send("Internal Server Error");
   }
 });

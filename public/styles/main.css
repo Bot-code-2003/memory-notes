@@ -15,9 +15,10 @@ a {
 header {
   background-color: #252525;
   padding: 20px;
-  text-align: center; /* Center-align text */
+  text-align: center;
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 
 header h1,
@@ -30,6 +31,15 @@ header p {
   align-items: center;
   justify-content: center;
   gap: 10px;
+}
+
+select {
+  padding: 10px;
+  border: 1px solid white;
+  color: white;
+  border-radius: 4px;
+  background-color: #222;
+  cursor: pointer;
 }
 
 .search input {
