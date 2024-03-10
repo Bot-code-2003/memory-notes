@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="/styles/style.css" />
+  </head>
+  <body>
+    <h1>MEMORY NOTES</h1>
+    <div class="container">
+      <div class="inner-container">
+        <h1>Welcome Back!</h1>
+        <p>Login to your account</p>
+        <form action="/login" method="post">
+          <label for="email">Email:</label>
+          <input
+            autocomplete="off"
+            type="email"
+            id="email"
+            name="username"
+            required
+          />
+          <label for="password">Password:</label>
+          <input
+            autocomplete="off"
+            type="password"
+            id="password"
+            name="password"
+            required
+          />
+          <button type="submit">Login</button>
+        </form>
+        <!-- <a href="#">Forgot password?</a> -->
+        <div class="social-login">
+          <a href="/auth/google">
+            <button id="google">Login with Google</button>
+          </a>
+        </div>
+        <div>
+          <p>
+            Dont have an account?
+            <a href="/">click here to register</a>
+          </p>
+        </div>
+      </div>
+      <div>
+        <img src="" alt="" id="login_img" />
+      </div>
+    </div>
+  </body>
+  <script>
+    const randomNum = Math.floor(Math.random() * 12) + 1;
+    const imgSrc = `/images/registration${randomNum}.WEBP`;
+    document.getElementById("login_img").setAttribute("src", imgSrc);
+  </script>
+</html>

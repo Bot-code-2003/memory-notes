@@ -1,0 +1,137 @@
+body {
+  background-color: #222;
+  color: #fff;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 30px;
+  border-radius: 15px;
+  background-color: rgba(185, 185, 185, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  backdrop-filter: blur(10px); /* Soften the background content */
+  border: 1px solid rgba(255, 255, 255, 0.4); /* Slightly more visible border */
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); /* Enhanced shadow for depth */
+  /* Enhanced gradient for a more pronounced gloss effect */
+  background-image: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0.25) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  overflow: hidden; /* Ensure no child content leaks outside the border-radius */
+  position: relative; /* Needed for pseudo-elements positioning */
+}
+
+.container::before {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0) 75%
+  );
+  transform: rotate(-30deg);
+  /* Creating a reflection effect */
+  filter: blur(20px);
+  opacity: 0.5;
+}
+
+.inner-container {
+  max-width: 400px;
+}
+
+h1 {
+  margin-top: 50px;
+}
+
+h1,
+p {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background-color: #e5e5e5;
+}
+
+button,
+a {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+button {
+  background-color: #333;
+  color: #fff;
+}
+
+button:hover {
+  background-color: #444;
+}
+
+a {
+  color: #ccc;
+}
+
+a:hover {
+  color: #fff;
+}
+
+.social-login {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.social-login img {
+  width: 20px;
+  margin-right: 10px;
+}
+
+#google {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+  background-color: #de5246;
+}
+
+#registration_img,
+#login_img {
+  width: 400px;
+  border-radius: 10px;
+}

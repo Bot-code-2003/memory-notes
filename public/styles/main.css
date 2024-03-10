@@ -41,6 +41,53 @@ select {
   background-color: #222;
   cursor: pointer;
 }
+.profile-img {
+  cursor: pointer;
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  position: relative; /* Keeps it, no change needed */
+}
+
+.profile-class {
+  position: relative;
+}
+
+.profile-img {
+  cursor: pointer;
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+}
+
+.profile-options {
+  display: none; /* Hidden initially */
+  padding: 10px;
+  border-radius: 4px;
+  min-width: 100px; /* Ensures a minimum width but can expand based on content */
+  position: absolute;
+  top: 80px; /* Adjust this value so it's directly beneath the .profile-img */
+  left: 50%; /* This centers the dropdown with respect to the profile image */
+  transform: translateX(-50%); /* This adjustment ensures actual centering */
+  background-color: #f9f9f9;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.profile-options a,
+.profile-options p {
+  margin: 0;
+  text-align: center;
+  color: black;
+  padding: 8px 0px;
+  text-decoration: none;
+  display: block;
+}
+
+.profile-options a:hover {
+  background-color: #e0e0e0;
+  border-radius: 4px;
+}
 
 .search input {
   padding: 10px;
@@ -51,7 +98,7 @@ select {
   border: 1px solid white;
   border-radius: 3px;
   max-height: 20px;
-  color: white;
+  color: #ffffff;
 }
 
 #submitBtn {
@@ -67,7 +114,7 @@ select {
 }
 
 main {
-  padding: 20px;
+  padding: 20px 20px 20px 50px;
 }
 
 .no-results {

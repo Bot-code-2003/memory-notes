@@ -54,6 +54,13 @@
           <option value="/rating">Rating</option>
         </select>
       </div>
+      <div class="profile-class">
+        <img src="/images/profile.WEBP" class="profile-img" />
+        <div class="profile-options" style="display: none">
+          <p id="profile"><%= notes2[0].username %></p>
+          <a href="/logout">Logout</a>
+        </div>
+      </div>
     </header>
 
     <main>
@@ -126,6 +133,14 @@
         var url = document.getElementById("filter").value;
         window.location.href = url;
       }
+
+      document
+        .querySelector(".profile-img")
+        .addEventListener("click", function () {
+          const options = document.querySelector(".profile-options");
+          options.style.display =
+            options.style.display === "block" ? "none" : "block";
+        });
     </script>
   </body>
 </html>
