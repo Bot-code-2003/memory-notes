@@ -62,6 +62,8 @@ app.get("/user_notes", async (req, res) => {
         "SELECT * FROM user_data WHERE user_id = $1",
         [req.user.id]
       );
+
+      //to get username
       const result2 = await db.query("SELECT * FROM users WHERE id = $1", [
         req.user.id,
       ]);
@@ -106,7 +108,7 @@ app.get("/logout", (req, res) => {
 //show results for clicked post
 app.get("/note/:id", async (req, res) => {
   try {
-    const result = await db.query("SELECT * FROM notes WHERE id=$1", [
+    const result = await db.query("SELECT * FROM user_data WHERE id=$1", [
       req.params.id,
     ]);
     const note = result.rows[0];
@@ -118,7 +120,7 @@ app.get("/note/:id", async (req, res) => {
 
 // Edit form open from database
 app.get("/edit/:id", async (req, res) => {
-  const result = await db.query("SELECT * FROM notes WHERE id = $1", [
+  const result = await db.query("SELECT * FROM user_data WHERE id = $1", [
     req.params.id,
   ]);
   const note = result.rows[0];
@@ -184,7 +186,7 @@ app.post("/notes/update/:id", async (req, res) => {
   const content = req.body.content;
   const rating = req.body.rating;
   await db.query(
-    "UPDATE notes SET title = ($1), content = ($2), rating=($3) WHERE id = $4",
+    "UPDATE user_data SET title = ($1), content = ($2), rating=($3) WHERE id = $4",
     [title, content, rating, req.params.id]
   );
   res.redirect("/");
@@ -216,9 +218,10 @@ app.post("/notes/new", async (req, res) => {
 app.post("/search", async (req, res) => {
   try {
     const searchTerm = req.body.dramaName;
-    const result = await db.query("SELECT * FROM notes WHERE title ILIKE $1", [
-      `%${searchTerm}%`,
-    ]);
+    const result = await db.query(
+      "SELECT * FROM user_data WHERE title ILIKE $1",
+      [`%${searchTerm}%`]
+    );
     const note = result.rows[0];
     console.log("Search results:", note); // Add this line for debugging
     res.render("search_results.ejs", { note });
