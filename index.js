@@ -103,6 +103,32 @@ app.get("/logout", (req, res) => {
   });
 });
 
+//show results for clicked post
+app.get("/note/:id", async (req, res) => {
+  try {
+    const result = await db.query("SELECT * FROM notes WHERE id=$1", [
+      req.params.id,
+    ]);
+    const note = result.rows[0];
+    res.render("search_results.ejs", { note });
+  } catch (error) {
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+// Edit form open from database
+app.get("/edit/:id", async (req, res) => {
+  const result = await db.query("SELECT * FROM notes WHERE id = $1", [
+    req.params.id,
+  ]);
+  const note = result.rows[0];
+  res.render("modify.ejs", {
+    note: note,
+    heading: "Edit Form",
+    submit: "Update",
+  });
+});
+
 ////////ABOUT passport.authenticate("google"....) IN /auth/google ROUTE//////////
 //passport.authenticate triggers google strategy (First parameter)
 //Scope: By defining these we ask user for permission for scope variables and retrive the info
@@ -152,6 +178,18 @@ app.post("/register", async (req, res) => {
   }
 });
 
+//update edited note in database
+app.post("/notes/update/:id", async (req, res) => {
+  const title = req.body.title;
+  const content = req.body.content;
+  const rating = req.body.rating;
+  await db.query(
+    "UPDATE notes SET title = ($1), content = ($2), rating=($3) WHERE id = $4",
+    [title, content, rating, req.params.id]
+  );
+  res.redirect("/");
+});
+
 //after user clicks on login after entering all his credentials
 app.post(
   "/login",
@@ -172,6 +210,22 @@ app.post("/notes/new", async (req, res) => {
     [title, content, rating, id]
   );
   res.redirect("/user_notes");
+});
+
+//Search for post
+app.post("/search", async (req, res) => {
+  try {
+    const searchTerm = req.body.dramaName;
+    const result = await db.query("SELECT * FROM notes WHERE title ILIKE $1", [
+      `%${searchTerm}%`,
+    ]);
+    const note = result.rows[0];
+    console.log("Search results:", note); // Add this line for debugging
+    res.render("search_results.ejs", { note });
+  } catch (error) {
+    console.error("Error searching for posts:", error);
+    res.status(500).send("Error searching for posts");
+  }
 });
 
 // Local strategy
@@ -239,6 +293,12 @@ passport.use(
     }
   )
 );
+
+//delete the note from database
+app.get("/delete/:id", async (req, res) => {
+  await db.query("DELETE FROM notes WHERE id = $1", [req.params.id]);
+  res.redirect("/");
+});
 
 passport.serializeUser((user, cb) => {
   cb(null, user);
