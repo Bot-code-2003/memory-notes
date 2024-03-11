@@ -26,21 +26,17 @@ app.use(express.static("public"));
 app.use(passport.initialize());
 app.use(passport.session());
 
-const { Pool } = pg;
-
-const pool = new Pool({
-  connectionString: process.env.POSTGRES_URL,
+const db = new pg.Client({
+  user: process.env.PG_USER,
+  host: process.env.PG_HOST,
+  database: process.env.PG_DATABASE,
+  password: process.env.PG_PASSWORD,
+  port: process.env.PG_PORT,
+  ssl: {
+    rejectUnauthorized: false, // For development or if the server uses a self-signed certificate
+  },
 });
-
-// const db = new pg.Client({
-//   user: process.env.PG_USER,
-//   host: process.env.PG_HOST,
-//   database: process.env.PG_DATABASE,
-//   password: process.env.PG_PASSWORD,
-//   port: process.env.PG_PORT,
-// });
-// db.connect();
-pool.connect();
+db.connect();
 
 app.set("view engine", "ejs");
 
@@ -252,6 +248,6 @@ passport.deserializeUser((user, cb) => {
   cb(null, user);
 });
 
-app.listen(process.env.PORT, () => {
+app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
