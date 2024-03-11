@@ -300,7 +300,7 @@ passport.use(
 //delete the note from database
 app.get("/delete/:id", async (req, res) => {
   await db.query("DELETE FROM user_data WHERE id = $1", [req.params.id]);
-  res.redirect("/");
+  res.redirect("/user_notes");
 });
 
 passport.serializeUser((user, cb) => {
