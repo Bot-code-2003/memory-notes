@@ -94,11 +94,17 @@ app.get("/a-z", async (req, res) => {
       "SELECT * FROM user_data WHERE user_id = $1 ORDER BY title ASC",
       [req.user.id]
     );
+    //to get username
+    const result2 = await db.query("SELECT * FROM users WHERE id = $1", [
+      req.user.id,
+    ]);
+    const notes2 = result2.rows;
     console.log("Fetched data: ");
     console.log(result.rows); // Check the fetched data
     const notes = result.rows;
     res.render("index.ejs", {
       notes: notes,
+      notes2: notes2,
     });
   } catch (error) {
     console.error(error); // Log any errors
@@ -113,9 +119,15 @@ app.get("/rating", async (req, res) => {
       "SELECT * FROM user_data WHERE user_id = $1 ORDER BY rating DESC",
       [req.user.id]
     );
+    //to get username
+    const result2 = await db.query("SELECT * FROM users WHERE id = $1", [
+      req.user.id,
+    ]);
+    const notes2 = result2.rows;
     const notes = result.rows;
     res.render("index.ejs", {
       notes: notes,
+      notes2: notes2,
     });
   } catch (error) {
     res.status(500).send("Internal Server Error");
