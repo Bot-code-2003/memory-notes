@@ -91,7 +91,7 @@ app.get("/user_notes", async (req, res) => {
 app.get("/a-z", async (req, res) => {
   try {
     const result = await db.query(
-      "SELECT * FROM user_data ORDER BY title ASC WHERE id = $1 ",
+      "SELECT * FROM user_data WHERE user_id = $1 ORDER BY title ASC",
       [req.user.id]
     );
     const notes = result.rows;
@@ -107,7 +107,7 @@ app.get("/a-z", async (req, res) => {
 app.get("/rating", async (req, res) => {
   try {
     const result = await db.query(
-      "SELECT * FROM notes ORDER BY rating DESC WHERE id = $1",
+      "SELECT * FROM user_data WHERE user_id = $1 ORDER BY rating DESC",
       [req.user.id]
     );
     const notes = result.rows;
