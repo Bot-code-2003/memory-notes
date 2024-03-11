@@ -87,6 +87,38 @@ app.get("/user_notes", async (req, res) => {
   }
 });
 
+//a-z filter
+app.get("/a-z", async (req, res) => {
+  try {
+    const result = await db.query(
+      "SELECT * FROM user_data ORDER BY title ASC WHERE id = $1 ",
+      [req.user.id]
+    );
+    const notes = result.rows;
+    res.render("index.ejs", {
+      notes: notes,
+    });
+  } catch (error) {
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+//rating filter
+app.get("/rating", async (req, res) => {
+  try {
+    const result = await db.query(
+      "SELECT * FROM notes ORDER BY rating DESC WHERE id = $1",
+      [req.user.id]
+    );
+    const notes = result.rows;
+    res.render("index.ejs", {
+      notes: notes,
+    });
+  } catch (error) {
+    res.status(500).send("Internal Server Error");
+  }
+});
+
 //get modify page to add new notes
 app.get("/new", (req, res) => {
   res.render("modify.ejs", {
