@@ -4,7 +4,73 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edit Notes</title>
-    <link rel="stylesheet" href="/styles/main.css" />
+    <!-- <link rel="stylesheet" href="/styles/main.css" /> -->
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        font-family: "Arial", sans-serif;
+        background-color: #121212; /* Dark background */
+        color: #e0e0e0; /* Light text */
+      }
+
+      .new-container {
+        max-width: 800px;
+        margin: 20px auto;
+        background: #1e1e1e; /* Darker shade for container */
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      }
+
+      h1,
+      h2 {
+        color: #76a9fa; /* Light blue for headings */
+      }
+
+      .modify-form {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .modify-form-element {
+        margin-bottom: 20px;
+      }
+
+      input[type="text"],
+      textarea,
+      input[type="number"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+        border: 1px solid #333; /* Subtle borders for inputs */
+        background-color: #2c2c2c; /* Slightly lighter background for inputs */
+        color: #ddd; /* Light text for inputs */
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      textarea {
+        resize: vertical;
+        height: 150px; /* Adjusted for better spacing */
+      }
+
+      .full-width {
+        background-color: #007bff; /* Bright blue for submit button */
+        color: white;
+        padding: 15px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+      }
+
+      .full-width:hover {
+        background-color: #0056b3;
+      }
+    </style>
   </head>
   <body>
     <div class="new-container">
@@ -15,18 +81,18 @@
         action="/notes/update/<%= note.id %>"
         method="post"
       >
-        <div>
-          <h4>Title</h4>
+        <div class="modify-form-element">
+          <h2>Title</h2>
           <input type="text" name="title" value="<%= note.title %>" />
         </div>
-        <div>
-          <h4>Content</h4>
+        <div class="modify-form-element">
+          <h2>Content</h2>
           <textarea name="content" id="content" cols="30" rows="10">
 <%= note.content  %></textarea
           >
         </div>
-        <div>
-          <h4>Rating</h4>
+        <div class="modify-form-element">
+          <h2>Rating</h2>
           <input
             type="number"
             class="inp-rating"
@@ -38,17 +104,23 @@
       </form>
       <% }else{ %>
       <form class="modify-form" action="/notes/new" method="post">
-        <h4>Title</h4>
-        <input type="text" name="title" placeholder="Title" required />
-        <h4>Content</h4>
-        <textarea
-          name="content"
-          placeholder="Content"
-          required
-          rows="10"
-        ></textarea>
-        <h4>Rating</h4>
-        <input type="number" name="rating" placeholder="rating" required />
+        <div class="modify-form-element">
+          <h2>Title</h2>
+          <input type="text" name="title" placeholder="Title" required />
+        </div>
+        <div class="modify-form-element">
+          <h2>Content</h2>
+          <textarea
+            name="content"
+            placeholder="Content"
+            required
+            rows="10"
+          ></textarea>
+        </div>
+        <div class="modify-form-element">
+          <h2>Rating</h2>
+          <input type="number" name="rating" placeholder="rating" required />
+        </div>
         <button class="full-width" type="submit"><%= submit %></button>
       </form>
       <% } %>

@@ -266,3 +266,83 @@ textarea {
 .new-container .inp-rating {
   width: 200px;
 }
+
+/*
+########################
+#### Media queries #####
+########################
+*/
+
+@media only screen and (max-width: 600px) {
+  /* CSS rules here will apply to devices with a viewport width of 600px or less */
+  header .search,
+  header .filter,
+  header .profile-class {
+    display: none !important;
+  }
+
+  main {
+    padding: 10px !important;
+  }
+
+  .rating {
+    margin-right: 0 !important;
+    background-color: #22222200 !important;
+    color: rgba(253, 224, 61, 0.888);
+  }
+
+  .right {
+    gap: 10px !important;
+  }
+  .last-space {
+    height: 50px !important;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .title h1 {
+    font-size: 1em !important;
+  }
+
+  .title p {
+    font-size: small;
+  }
+  header {
+    padding: 7px;
+  }
+
+  .memory-note h4,
+  .memory-note p {
+    font-size: 0.7em;
+  }
+
+  .memory-note {
+    padding: 0 8px !important;
+  }
+
+  .rating {
+    min-width: 20px !important;
+    font-size: 10px !important;
+  }
+
+  .trash,
+  .edit {
+    padding: 2px 4px !important;
+  }
+
+  svg {
+    width: 12px !important;
+    height: 12px !important;
+  }
+  .right {
+    margin-left: 5px !important;
+  }
+
+  footer a {
+    font-size: 20px !important;
+    width: 30px !important;
+    height: 30px !important;
+    line-height: normal !important;
+  }
+}
+

@@ -3,35 +3,50 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Search Results</title>
+    <title>Note</title>
     <style>
       body {
-        background-color: #222;
-        color: #fff;
-        font-family: Arial, sans-serif;
+        background-color: #121212; /* Deep dark background */
+        color: #e0e0e0; /* Light grey text for contrast */
+        font-family: "Arial", sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        margin: 0;
         padding: 20px;
       }
-      h1 {
-        margin-bottom: 20px;
-      }
-      ul {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-      }
-      li {
-        margin-bottom: 20px;
-        border-bottom: 1px solid #444;
-        padding-bottom: 20px;
+      .note-card {
+        position: relative;
+        background-color: #1e1e1e; /* Slightly lighter dark shade for the card */
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); /* Soft shadow for depth */
+        padding: 20px;
+        margin: 20px 0;
+        width: 80%;
+        height: 80vh;
+        /* Maximum width for large screens */
       }
       h2 {
-        margin-bottom: 10px;
+        color: #4caf50; /* Bright green for ratings */
+        margin-bottom: 15px;
       }
       p {
-        margin-bottom: 5px;
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 10px;
       }
-      p.rating {
-        color: #ffcc00;
+      .rating {
+        position: absolute;
+        bottom: 20px;
+        font-weight: bold;
+        color: #ffd700;
+      }
+      @media (max-width: 768px) {
+        .note-card {
+          width: 90%; /* More width for smaller screens */
+        }
       }
     </style>
   </head>
@@ -39,13 +54,17 @@
     <% if(note.length == 0){ %>
     <h3>No results found!</h3>
     <% }else{ %>
-    <ul>
-      <li>
-        <h2><%= note.title %></h2>
-        <p><%= note.content %></p>
-        <p class="rating">Rating: <%= note.rating %></p>
-      </li>
-      <% } %>
-    </ul>
+    <div class="note-card">
+      <h2>Note Title Here</h2>
+      <p>
+        This is an example note. It showcases how you can utilize spacing, color
+        contrasts, and typography to create a visually appealing and readable
+        layout on a dark-themed background. The card format adds a modern touch
+        and helps segment the information clearly.
+      </p>
+      <p class="rating">Rating: 5/5</p>
+    </div>
+    <% } %>
+    <!-- Repeat .note-card for additional notes -->
   </body>
 </html>
