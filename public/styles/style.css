@@ -11,20 +11,14 @@ body {
   margin: 50px auto;
   padding: 30px;
   border-radius: 15px;
-  background-color: rgba(185, 185, 185, 0.5); /* Semi-transparent background */
+  background-color: rgba(54, 54, 54, 0.5); /* Semi-transparent background */
   display: flex;
   justify-content: space-around;
   align-items: center;
   backdrop-filter: blur(10px); /* Soften the background content */
   border: 1px solid rgba(255, 255, 255, 0.4); /* Slightly more visible border */
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); /* Enhanced shadow for depth */
+
   /* Enhanced gradient for a more pronounced gloss effect */
-  background-image: linear-gradient(
-    to bottom right,
-    rgba(255, 255, 255, 0.25) 0%,
-    rgba(255, 255, 255, 0.1) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
   overflow: hidden; /* Ensure no child content leaks outside the border-radius */
   position: relative; /* Needed for pseudo-elements positioning */
 }
@@ -37,12 +31,6 @@ body {
   left: -50%;
   width: 200%;
   height: 200%;
-  background-image: linear-gradient(
-    to bottom right,
-    rgba(255, 255, 255, 0.2) 0%,
-    rgba(255, 255, 255, 0.1) 50%,
-    rgba(255, 255, 255, 0) 75%
-  );
   transform: rotate(-30deg);
   /* Creating a reflection effect */
   filter: blur(20px);
@@ -134,4 +122,97 @@ a:hover {
 #login_img {
   width: 400px;
   border-radius: 10px;
+}
+
+/* Base styles for mobile and XS devices */
+@media only screen and (max-width: 768px) {
+  body {
+    background-color: #222;
+    color: #fff;
+    font-family: "Arial", sans-serif;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+  }
+
+  h1 {
+    color: white; /* Bright color for headings */
+    margin-bottom: 1rem;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 20px;
+    background-color: transparent; /* Adjust based on preference */
+    border: none; /* Removes border */
+    box-shadow: none; /* Removes shadow */
+  }
+
+  .inner-container {
+    width: 100%; /* Full width for better use of space */
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Utilizes full width */
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  button,
+  #google {
+    width: calc(100% - 20px); /* Full width minus padding */
+    margin: 10px 0; /* Adds space between form elements */
+    padding: 10px;
+    border-radius: 5px; /* Rounded corners for inputs and buttons */
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    background-color: #333; /* Dark theme for inputs */
+    color: #fff;
+    border: 1px solid #444; /* Subtle border for inputs */
+  }
+
+  button,
+  #google {
+    width: 100% !important;
+    background-color: #007bff; /* Consistent button color */
+    color: #fff;
+    cursor: pointer;
+  }
+
+  #google {
+    background-color: #dd4b39; /* Google button color */
+  }
+
+  button:hover,
+  #google:hover {
+    opacity: 0.9; /* Slight hover effect */
+  }
+
+  .social-login {
+    margin-top: 20px;
+  }
+
+  a {
+    color: #fff; /* Bright color for links */
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  /* Hides the image on mobile and XS devices */
+  #registration_img {
+    display: none;
+  }
 }
