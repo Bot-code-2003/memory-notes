@@ -55,14 +55,9 @@
     <h3>No results found!</h3>
     <% }else{ %>
     <div class="note-card">
-      <h2>Note Title Here</h2>
-      <p>
-        This is an example note. It showcases how you can utilize spacing, color
-        contrasts, and typography to create a visually appealing and readable
-        layout on a dark-themed background. The card format adds a modern touch
-        and helps segment the information clearly.
-      </p>
-      <p class="rating">Rating: 5/5</p>
+      <h2><%= note.title %></h2>
+      <p><%= note.content %></p>
+      <p class="rating"><%= note.rating %>/10</p>
     </div>
     <% } %>
     <!-- Repeat .note-card for additional notes -->
