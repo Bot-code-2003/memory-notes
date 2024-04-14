@@ -20,14 +20,6 @@ To run MemoryNotes locally, follow these steps:
 
 7.  Open your web browser and visit `http://localhost:3000` to view the MemoryNotes application.
 
-## Environment Variables
-
-MemoryNotes requires the following environment variables to be set:
-
-- `REACT_APP_API_KEY`: Your API key for accessing external services (if applicable).
-
-Ensure you create a `.env` file in the root directory of the project and add your own environment variables as described in the "Running Locally" section.
-
 ## Usage
 
 Once the application is running locally, you can use MemoryNotes to:
