@@ -2,6 +2,8 @@
 
 MemoryNotes is a web application that allows users to save information about their watched dramas, series, or movies, including a name, description, and rating.
 
+## Passwords are hashed (Local auth)
+
 ## Running Locally
 
 To run MemoryNotes locally, follow these steps:
